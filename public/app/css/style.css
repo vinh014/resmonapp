@@ -1,0 +1,343 @@
+.disable-select {
+    /* auto focus others when double click */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 16px;
+}
+
+table {
+    font-size: 16px;
+}
+
+.ui-draggable, .ui-droppable {
+    background-position: top;
+}
+
+body {
+    min-width: 940px;
+}
+
+.resource-column {
+    width: 25%;
+    float: left;
+    margin: 10px 0 0;
+    padding: 0 4px 13px; /* bottom for drag and drop */
+    text-align: left;
+    min-height: 200px;
+    box-sizing: border-box;
+}
+
+.portlet {
+    margin-bottom: 8px;
+}
+.portlet.ui-widget.ui-widget-content {
+    border-color: #e9e9e9;
+}
+.portlet:last-child {
+    margin-bottom: 0px;
+}
+
+.portlet-header {
+    padding: 3px 65px 3px 16px;
+    margin-bottom: 0px;
+    position: relative;
+    font-weight: normal !important;
+
+    border-color: #e9e9e9;
+    background: #e9e9e9;
+}
+
+.portlet-header .ui-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+    cursor: pointer;
+}
+
+.portlet-header .ui-icon.ui-icon-lightbulb {
+    right: 16px;
+}
+
+.portlet-header .ui-icon.ui-icon-play {
+    right: 32px;
+}
+
+.portlet-header .ui-icon.ui-icon-trash {
+    right: 48px;
+}
+
+.portlet-header .ui-icon.ui-icon-arrow-4 {
+    left: 0px;
+}
+
+
+.portlet-content {
+    padding: 6px;
+    outline: none;
+    display: none;
+}
+.portlet-content * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    /*display: inline; error can't not break lines*/
+}
+
+.portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 16px 16px 0;
+    height: 50px;
+}
+
+div.the-resource {
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: lightskyblue;
+    padding: 5px 26px 5px 26px;
+    border-radius: 8px;
+    position: relative;
+}
+
+div.the-resource .nickname-container {
+    position: relative;
+    width: 100%;
+}
+
+div.the-resource .nickname {
+    width: 100%;
+    display: inline-block;
+    border: 0;
+    outline: 0;
+}
+
+div.the-resource .ui-icon {
+    position: absolute;
+    top: 8px;
+    cursor: pointer;
+}
+
+div.the-resource .ui-icon-circle-plus {
+    right: 5px;
+}
+
+div.the-resource .ui-icon-trash {
+    left: 5px;
+}
+
+div.the-resource .ui-icon-arrowthick-1-w {
+    left: 21px;
+}
+
+div.the-resource .ui-icon-arrowthick-1-e {
+    right: 21px;
+}
+
+
+div.main-container {
+    position: relative;
+    text-align: center;
+    /*padding-top: 10px;*/
+}
+
+div.sub-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.booking-title {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 16px;
+    outline: none;
+}
+
+.status-container {
+    display: inline-block;
+}
+
+.status-container .status-item {
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+}
+
+.status-container .status-item:first-child {
+    margin-left: 0px;
+}
+
+.priority-container {
+    display: inline-block;
+}
+
+.priority-container .priority-item {
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+}
+
+.priority-container .priority-item:first-child {
+    margin-left: 0px;
+}
+
+div.info-container {
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+div.sub-info-container {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+div.info-container span.ui-icon,
+div.info-container span.none-icon {
+    margin-right: 0px;
+}
+
+.info-container .ui-cursor {
+    cursor: pointer;
+}
+
+.info-container .add-resource-action:hover,
+.info-container .download-action:hover,
+.info-container .upload-action:hover {
+    text-decoration: underline;
+}
+
+div.separator {
+    width: 5px;
+    background-color: lightseagreen;
+    display: inline-block;
+    height: 100%;
+    vertical-align: baseline;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 4px 0;
+    color: transparent;
+    border-radius: 4px;
+}
+
+.status-0 {
+    background-color: lightcyan;
+}
+
+.status-1 {
+    background-color: yellow
+}
+
+.status-2 {
+    background-color: deepskyblue;
+}
+
+.status-3 {
+    background-color: orange
+}
+
+.priority-0 {
+    background-color: lightcyan
+}
+
+.priority-1 {
+    background-color: hotpink
+}
+
+.notify-detail {
+    min-width: 100px;
+    display: inline-block;
+}
+
+.notify-detail:first-letter {
+    text-transform: uppercase;
+}
+
+.notify-detail.saving {
+    color: orange;
+}
+
+.notify-detail.save-ok {
+    color: deepskyblue;
+}
+
+.notify-detail.upload-success {
+    color: red !important;
+}
+
+#dialog-confirm {
+    text-align: center;
+}
+
+#dialog-confirm .ui-icon-alert {
+    float: left;
+    margin: 12px 12px 20px 0;
+}
+
+#dialog-confirm .content-confirm {
+    margin-top: 10px;
+    width: 100%;
+    color: orange;
+    overflow: hidden;
+}
+
+div.footer-info {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 6px;
+    line-height: 20px;
+    background-color: white;
+}
+
+div.footer-info a {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+}
+div.footer-info a:first-of-type {
+    margin-left: 5px;
+}
+div.footer-info a:last-of-type {
+}
+
+div.footer-info a.bibo-info {
+}
+
+div.footer-info a:hover {
+    text-decoration: underline;
+}
+
+div.footer-info hr {
+    background-color: lightgray;
+    outline: 0;
+    height: 1px;
+    border: 0;
+    padding: 0;
+    margin: 0 0 6px;
+}
+
+.center-container {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+.center-container button {
+    margin-top: 15%;
+}

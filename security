@@ -1,0 +1,40 @@
+https://www.jamviet.com/cong-cu-ma-hoa-file-javascript.html
+https://javascriptobfuscator.com/Javascript-Obfuscator.aspx
+Javascript Obfuscator
+
+https://javascript-minifier.com/
+minify include rename function
+
+- put keys of object into '' or ""
+- chống đọc và sửa đổi
+    + thêm code rác (từ chính code hiện tại). bao bọc bởi (function (){}); => bỏ qua
+    + thêm code kiểm tra chính chủ + thêm ngay sau ready
+    + gộp các file js về làm một: enc.js. cat *.js >> enc.js.c
+    + minify
+    + mã hóa
+    + update static version
+
+- thêm code kiểm tra chính chủ: domain vào các function
+    mục đích làm nản lòng sao chép
+    + regex: (function\s+[^\(]*\([^\)]*\)\s+\{) to $1ABCXYZ
+    + kiểm tra: domain, ký tự, độ dài
+        domain.com
+    + thay đổi trang: thay đổi cấu trúc, xóa element, tắt hiệu ứng
+        $(document).off().unbind();
+        eval("'" + 'ppanomser'.split('').reverse().join('') + "." + 'moc'.split('').reverse().join('') + "' == " + 'noitacol'.split('').reverse().join('') + "['" + 'emantsoh'.split('').reverse().join('') + "']") ||
+        eval("$(" + 'tnemucod'.split('').reverse().join('') + ")." + 'ffo'.split('').reverse().join('') + "()." + 'dnib'.split('').reverse().join('') + "()");
+        'moc' <> 'niw'
+        'ppanomser' <> 'tset'
+
+How to release on live site / linux
+    - copy all files from win dir to linux dir
+    - add security code
+    - encode js files
+    - commit
+    - release
+    
+sync with google drive through js
+sync with fb note or post
+sync with twitter post
+cloud lost data open multi tab or sync data over multi tab
+detect modified then alert and stop saving
