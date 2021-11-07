@@ -341,3 +341,6 @@ div.footer-info hr {
 .center-container button {
     margin-top: 15%;
 }
+.portlet-toggle.has-content {
+    background-color: pink;
+}

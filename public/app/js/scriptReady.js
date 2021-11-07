@@ -45,6 +45,13 @@ $(function () {
     $(document).on('blur', '.portlet-content', function () {
         var val = _bookingDetail($(this).html());
         $(this).html(val);
+
+        if (val) {
+            $(this).closest('.portlet').find('.portlet-toggle').addClass('has-content');
+        } else {
+            $(this).closest('.portlet').find('.portlet-toggle').removeClass('has-content');
+        }
+
         saveData('portlet-content');
     });
     // not remove html tags when editing content

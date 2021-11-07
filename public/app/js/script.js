@@ -225,13 +225,18 @@ function _addResource(nickname) {
 }
 
 function _addBooking(resourceEl, status, priority, title, detail) {
+    var bookingDetail = _bookingDetail(detail);
     var html = BindController.bind($('#booking-sample').text().trim(), {
         'bookingStatus': status,
         'bookingPriority': priority,
         'bookingTitle': _bookingTitle(title ? title : detail),
-        'bookingDetail': _bookingDetail(detail)
+        'bookingDetail': bookingDetail
     });
-    return $(html).appendTo($(resourceEl));
+    var dom = $(html);
+    if (bookingDetail) {
+        $(dom).closest('.portlet').find('.portlet-toggle').addClass('has-content');
+    }
+    return $(dom).appendTo($(resourceEl));
 }
 
 function _deleteBooking(el, callback) {
