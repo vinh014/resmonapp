@@ -179,6 +179,39 @@ function readData() {
  * @param data
  */
 function writeData(data) {
+    // config: total of versions
+    var limit = 100;
+
+    // get last version
+    var lastVersion = localStorage.getItem('db-version');
+
+    // current version
+    var currentVersion;
+
+    // valid last version
+    if (lastVersion) {
+        // current version
+        currentVersion = parseInt(lastVersion) + 1;
+
+        // full history, remove newest version
+        if (currentVersion > limit) {
+            // first valid version
+            var firstVersion = currentVersion - limit;
+
+            // remove data of first version
+            localStorage.removeItem('db-data-' + firstVersion);
+        }
+    } else { // invalid, init with 0
+        currentVersion = 1;
+    }
+
+    // backup last version data
+    localStorage.setItem('db-data-' + currentVersion, localStorage.getItem('db-data'));
+
+    // update last version
+    localStorage.setItem('db-version', currentVersion);
+
+    // update active version
     return localStorage.setItem('db-data', data);
 }
 
