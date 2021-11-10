@@ -34,7 +34,7 @@ body {
     margin: 10px 0 0;
     padding: 0 4px 13px; /* bottom for drag and drop */
     text-align: left;
-    min-height: 200px;
+    min-height: 100px;
     box-sizing: border-box;
 }
 
