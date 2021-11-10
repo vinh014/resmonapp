@@ -29,7 +29,7 @@ body {
 }
 
 .resource-column {
-    width: 33.333%;
+    width: 33.3%;
     float: left;
     margin: 10px 0 0;
     padding: 0 4px 13px; /* bottom for drag and drop */
