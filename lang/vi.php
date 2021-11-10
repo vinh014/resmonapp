@@ -51,4 +51,6 @@ return array(
     'saved' => 'Đã lưu',
     'delete_button' => 'Xóa',
     'cancel_button' => 'Không',
+    'display_booking' => 'Hiện/ẩn nhiệm vụ này',
+    'show_hidden_bookings' => 'Hiện/ẩn tất cả nhiệm vụ ẩn của tài nguyên này',
 );

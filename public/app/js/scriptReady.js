@@ -131,8 +131,14 @@ $(function () {
         saveData('add-booking-action');
     });
     $(document).on('click', '.delete-booking-action', function () {
+        var resource = $(this).closest('.resource-column');
         _deleteBooking($(this).closest('.portlet'), function () {
             saveData('delete-booking-action');
+            if ($(resource).find('.display-booking-0').length) {
+                $(resource).addClass('has-hidden-booking');
+            } else {
+                $(resource).removeClass('has-hidden-booking');
+            }
         });
     });
     $(document).on('click', '.display-booking-action', function () {

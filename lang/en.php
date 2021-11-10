@@ -51,4 +51,6 @@ return array(
     'saved' => 'it\'s saved',
     'delete_button' => 'Delete',
     'cancel_button' => 'Cancel',
+    'display_booking' => 'Show/hide this booking',
+    'show_hidden_bookings' => 'Show/hide all hidden bookings of this resource',
 );

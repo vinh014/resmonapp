@@ -324,7 +324,7 @@ function _confirmDialog(el, type, content, removeCallback, hideCallback) {
         setTimeout(function () {
             $(el).remove();
             removeCallback();
-        }, 1000);
+        }, 10);
     };
     obj.buttons[Lang.cancel_button] = function () {
         $(this).dialog('close');
