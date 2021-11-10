@@ -51,6 +51,7 @@
 <?php include 'app-dialog.php'; ?>
 <noscript id="booking-sample" style="display: none">
     <?php
+    $_bookingDisplay = '{bookingDisplay}';
     $_bookingStatus = '{bookingStatus}';
     $_bookingPriority = '{bookingPriority}';
     $_bookingTitle = '{bookingTitle}';

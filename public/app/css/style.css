@@ -78,6 +78,11 @@ body {
     right: 48px;
 }
 
+.portlet-header .ui-icon.ui-icon-cancel {
+    right: 64px;
+    top: 12px;
+}
+
 .portlet-header .ui-icon.ui-icon-arrow-4 {
     left: 0px;
 }
@@ -140,10 +145,27 @@ div.the-resource .ui-icon-arrowthick-1-w {
     left: 21px;
 }
 
+div.the-resource .ui-icon-cancel {
+    right: 37px;
+    top: 9px;
+}
+
 div.the-resource .ui-icon-arrowthick-1-e {
     right: 21px;
 }
 
+.resource-column.has-hidden-booking .the-resource .show-hidden-bookings-action {
+    background-color: pink;
+}
+.portlet.display-booking-0 .display-booking-action {
+    background-color: pink;
+}
+.portlet.display-booking-0 {
+    display: none;
+}
+.show-hidden-bookings .portlet.display-booking-0 {
+    display: block;
+}
 
 div.main-container {
     position: relative;

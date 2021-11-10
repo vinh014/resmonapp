@@ -92,6 +92,10 @@ function saveData(action) {
         clearTimeout(holder);
         holder = null;
     }
+    
+    function _getDisplay(bookingObj) {
+        return $(bookingObj).is('.display-booking-1') ? '1' : '0';
+    }
 
     function _getStatus(bookingObj) {
         var status;
@@ -134,6 +138,7 @@ function saveData(action) {
             var bookings = [];
             $(this).find('.portlet').each(function () {
                 bookings.push({
+                    'ds': _getDisplay(this),
                     's': _getStatus(this),
                     'p': _getPriority(this),
                     't': _bookingTitle($(this).find('.booking-title').html()),
@@ -164,9 +169,16 @@ function loadData() {
             if (jQuery.isEmptyObject(bookings[i])) {
                 continue;
             }
-            _addBooking(resourceEl, bookings[i]['s'], bookings[i]['p'], bookings[i]['t'], bookings[i]['d']);
+            _addBooking(resourceEl, bookings[i]['ds'], bookings[i]['s'], bookings[i]['p'], bookings[i]['t'], bookings[i]['d']);
         }
     }
+    $('.resource-column').each(function () {
+        if ($(this).find('.display-booking-0').length) {
+            $(this).addClass('has-hidden-booking');
+        } else {
+            $(this).removeClass('has-hidden-booking');
+        }
+    });
 }
 
 function readData() {
@@ -224,9 +236,10 @@ function _addResource(nickname) {
     return dom;
 }
 
-function _addBooking(resourceEl, status, priority, title, detail) {
+function _addBooking(resourceEl, display, status, priority, title, detail) {
     var bookingDetail = _bookingDetail(detail);
     var html = BindController.bind($('#booking-sample').text().trim(), {
+        'bookingDisplay': display ? display : 1,
         'bookingStatus': status,
         'bookingPriority': priority,
         'bookingTitle': _bookingTitle(title ? title : detail),

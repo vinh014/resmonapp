@@ -127,7 +127,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-booking-action', function () {
-        _addBooking($(this).closest('.resource-column'), 0, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
+        _addBooking($(this).closest('.resource-column'), 1, 0, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
         saveData('add-booking-action');
     });
     $(document).on('click', '.delete-booking-action', function () {
@@ -135,6 +135,27 @@ $(function () {
             saveData('delete-booking-action');
         });
     });
+    $(document).on('click', '.display-booking-action', function () {
+        var obj = $(this).closest('.portlet');
+        switch (true) {
+            case obj.is('.display-booking-0'):
+                obj.toggleClass('display-booking-0 display-booking-1');
+                break;
+            case obj.is('.display-booking-1'):
+                obj.toggleClass('display-booking-1 display-booking-0');
+                break;
+        }
+        saveData('display-booking-action');
+        if ($(this).closest('.resource-column').find('.display-booking-0').length) {
+            $(this).closest('.resource-column').addClass('has-hidden-booking');
+        } else {
+            $(this).closest('.resource-column').removeClass('has-hidden-booking');
+        }
+    });
+    $(document).on('click', '.show-hidden-bookings-action', function () {
+        $(this).closest('.resource-column').toggleClass('show-hidden-bookings');
+    });
+    
     $(document).on('click', '.delete-resource-action', function () {
         _deleteResource($(this).closest('.resource-column'), function () {
             saveData('delete-resource-action');
