@@ -85,6 +85,7 @@ body {
 
 .portlet-header .ui-icon.ui-icon-arrow-4 {
     left: 0px;
+    cursor: move;
 }
 
 
@@ -143,6 +144,12 @@ div.the-resource .ui-icon-trash {
 
 div.the-resource .ui-icon-arrowthick-1-w {
     left: 21px;
+}
+
+div.the-resource .ui-icon-arrow-4-diag {
+    left: 37px;
+    top: 9px;
+    cursor: move;
 }
 
 div.the-resource .ui-icon-cancel {

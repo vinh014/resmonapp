@@ -41,7 +41,7 @@
     </div>
 </div>
 <div class="main-container">
-    <div class="sub-container">
+    <div class="sub-container resource-container">
         <!-- resource and booking infos -->
     </div>
 </div>

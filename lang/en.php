@@ -53,4 +53,5 @@ return array(
     'cancel_button' => 'Cancel',
     'display_booking' => 'Show/hide this booking',
     'show_hidden_bookings' => 'Show/hide all hidden bookings of this resource',
+    'dragndrop' => 'Drag and drop this resource',
 );

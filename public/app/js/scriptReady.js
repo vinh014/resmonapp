@@ -14,6 +14,7 @@ $(function () {
     }
 
     _autoSortable();
+    _sortable4Resource();
 
     $(document).on('click', '.info-container .ui-icon-minusthick', function () {
         var icon = $('.ui-icon-minusthick.portlet-toggle');

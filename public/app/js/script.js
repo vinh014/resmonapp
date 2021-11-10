@@ -83,6 +83,18 @@ function _sortable(el) {
     });
 }
 
+function _sortable4Resource() {
+    $('.resource-container').sortable({
+        items: '.resource-column',
+        connectWith: '.resource-container',
+        handle: '.dragndrop-handle',
+        cancel: '.portlet,.ui-icon:not(.dragndrop-handle),input,textarea,button,select,option',
+        update: function (event, ui) {
+            saveData('sorted');
+        }
+    });
+}
+
 var holder = null;
 
 function saveData(action) {
