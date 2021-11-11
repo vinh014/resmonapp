@@ -195,10 +195,10 @@ function loadData() {
 
 function readData() {
     // for historical reason
-    if (localStorage.getItem('db-data')) {
-        return localStorage.getItem('db-data');
+    if (localStorage.getItem('db-data-active')) {
+        return localStorage.getItem('db-data-active');
     }
-    return localStorage.getItem('db-data-active');
+    return localStorage.getItem('db-data');
 }
 
 /**
