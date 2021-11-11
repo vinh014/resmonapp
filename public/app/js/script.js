@@ -212,8 +212,8 @@ function writeData(data) {
     // valid last version
     if (lastVersion) {
         // if same, no need to back up
-        var lastData = localStorage.getItem('db-data-' + lastVersion);
-        if (JSON.stringify(data) == JSON.stringify(lastData)) {
+        var activeData = localStorage.getItem('db-data');
+        if (JSON.stringify(data) == JSON.stringify(activeData)) {
             return;
         }
 
