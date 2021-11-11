@@ -209,34 +209,38 @@ function writeData(data) {
     // get last version
     var lastVersion = localStorage.getItem('db-version');
 
-    // current version
-    var currentVersion;
-
     // valid last version
     if (lastVersion) {
-        // current version
-        currentVersion = parseInt(lastVersion) + 1;
+        // if same, no need to back up
+        var lastData = localStorage.getItem('db-data-' + lastVersion);
+        if (JSON.stringify(data) == JSON.stringify(lastData)) {
+            return;
+        }
+
+        // update new value
+        lastVersion = parseInt(lastVersion) + 1;
 
         // full history, remove newest version
-        if (currentVersion > limit) {
+        if (lastVersion > limit) {
             // first valid version
-            var firstVersion = currentVersion - limit;
+            var firstVersion = lastVersion - limit;
 
             // remove data of first version
             localStorage.removeItem('db-data-' + firstVersion);
         }
     } else { // invalid, init with 0
-        currentVersion = 1;
+        // update new value
+        lastVersion = 1;
     }
 
-    // backup last version data
-    localStorage.setItem('db-data-' + currentVersion, localStorage.getItem('db-data'));
+    // backup new last version with old data
+    localStorage.setItem('db-data-' + lastVersion, localStorage.getItem('db-data'));
 
-    // update last version
-    localStorage.setItem('db-version', currentVersion);
+    // update last version new value
+    localStorage.setItem('db-version', lastVersion);
 
-    // update active version
-    return localStorage.setItem('db-data', data);
+    // update active version with new data
+    localStorage.setItem('db-data', data);
 }
 
 function _addResource(nickname) {
