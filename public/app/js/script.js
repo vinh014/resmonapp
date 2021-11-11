@@ -194,7 +194,7 @@ function loadData() {
 }
 
 function readData() {
-    return localStorage.getItem('db-data');
+    return localStorage.getItem('db-data-active');
 }
 
 /**
@@ -212,7 +212,7 @@ function writeData(data) {
     // valid last version
     if (lastVersion) {
         // if same, no need to back up
-        var activeData = localStorage.getItem('db-data');
+        var activeData = localStorage.getItem('db-data-active');
         if (JSON.stringify(data) == JSON.stringify(activeData)) {
             return;
         }
@@ -234,13 +234,13 @@ function writeData(data) {
     }
 
     // backup new last version with old data
-    localStorage.setItem('db-data-' + lastVersion, localStorage.getItem('db-data'));
+    localStorage.setItem('db-data-' + lastVersion, localStorage.getItem('db-data-active'));
 
     // update last version new value
     localStorage.setItem('db-version', lastVersion);
 
     // update active version with new data
-    localStorage.setItem('db-data', data);
+    localStorage.setItem('db-data-active', data);
 }
 
 function _addResource(nickname) {
