@@ -48,14 +48,15 @@ function downloadString(text, fileType, fileName) {
 
 function uploadFile() {
     _uploadFile(function (content) {
+        var obj;
         try {
-            JSON.parse(content);
+            obj = JSON.parse(content);
         } catch (e) {
             $('.notify-detail').text(Lang.invalid_json);
             console && console.log(e);
             return;
         }
-        writeData(content);
+        writeData(obj);
         $('.notify-detail').text(Lang.upload_success).addClass('upload-success');
     });
 }
@@ -167,7 +168,7 @@ function saveData(action) {
             });
             data.push({'id': resourceId, 'n': nickname, 'bs': bookings});
         });
-        writeData(JSON.stringify(data));
+        writeData(data);
 
         // notify that it's saved
         $('.notify-detail').text(Lang.saved).addClass('save-ok').removeClass('saving');
@@ -217,6 +218,7 @@ function readData() {
  * @param data
  */
 function writeData(data) {
+    data = JSON.stringify(data);
     // config: total of versions
     var limit = 100;
 
@@ -227,7 +229,7 @@ function writeData(data) {
     if (lastVersion) {
         // if same, no need to back up
         var activeData = localStorage.getItem('db-data-active');
-        if (JSON.stringify(data) == JSON.stringify(activeData)) {
+        if (data == activeData) {
             return;
         }
 
