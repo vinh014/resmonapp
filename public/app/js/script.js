@@ -206,10 +206,20 @@ function loadData() {
 
 function readData() {
     // for historical reason
-    if (localStorage.getItem('db-data-active')) {
-        return localStorage.getItem('db-data-active');
+    if (!localStorage.getItem('db-data-active')) {
+        localStorage.setItem('db-data-active', localStorage.getItem('db-data'));
+        localStorage.removeItem('db-data');
     }
-    return localStorage.getItem('db-data');
+
+    // garbage collector
+    if (localStorage.getItem('db-version')) {
+        for (var i = 0; i <= 10000; i++) {
+            localStorage.removeItem('db-data-' + i);
+        }
+        localStorage.removeItem('db-version');
+        localStorage.removeItem('db-data');
+    }
+    return localStorage.getItem('db-data-active');
 }
 
 /**
@@ -219,41 +229,6 @@ function readData() {
  */
 function writeData(data) {
     data = JSON.stringify(data);
-    // config: total of versions
-    var limit = 100;
-
-    // get last version
-    var lastVersion = localStorage.getItem('db-version');
-
-    // valid last version
-    if (lastVersion) {
-        // if same, no need to back up
-        var activeData = localStorage.getItem('db-data-active');
-        if (data == activeData) {
-            return;
-        }
-
-        // update new value
-        lastVersion = parseInt(lastVersion) + 1;
-
-        // full history, remove newest version
-        if (lastVersion > limit) {
-            // first valid version
-            var firstVersion = lastVersion - limit;
-
-            // remove data of first version
-            localStorage.removeItem('db-data-' + firstVersion);
-        }
-    } else { // invalid, init with 0
-        // update new value
-        lastVersion = 1;
-    }
-
-    // backup new last version with old data
-    localStorage.setItem('db-data-' + lastVersion, localStorage.getItem('db-data-active'));
-
-    // update last version new value
-    localStorage.setItem('db-version', lastVersion);
 
     // update active version with new data
     localStorage.setItem('db-data-active', data);
