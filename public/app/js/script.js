@@ -206,9 +206,33 @@ function loadData() {
 }
 
 function readData() {
+    // use new version
+    if (!localStorage.getItem('db-data-active') && !localStorage.getItem('db-data')) {
+        var data = {};
+        // build resources
+        for (var i = 0; i < localStorage.length; i++) {
+            var id = localStorage.key(i);
+            if (id.charAt(0) == 'r') {
+                data[id] = JSON.parse(localStorage.getItem(id));
+                data[id]['bs'] = [];
+            }
+        }
+        // build bookings
+        for (var i = 0; i < localStorage.length; i++) {
+            var id = localStorage.key(i);
+            if (id.charAt(0) == 'b') {
+                var booking = JSON.parse(localStorage.getItem(id));
+                data[booking['rid']]['bs'].push(booking);
+            }
+        }
+        return Object.values(data);
+    }
+
     // for historical reason
     if (!localStorage.getItem('db-data-active')) {
-        localStorage.setItem('db-data-active', localStorage.getItem('db-data'));
+        if (localStorage.getItem('db-data')) {
+            localStorage.setItem('db-data-active', localStorage.getItem('db-data'));
+        }
         localStorage.removeItem('db-data');
     }
 
@@ -220,7 +244,16 @@ function readData() {
         localStorage.removeItem('db-version');
         localStorage.removeItem('db-data');
     }
-    return  JSON.parse(localStorage.getItem('db-data-active'));
+
+    // clean
+    setTimeout(function () {
+        if (localStorage.getItem('db-data-active')) {
+            saveData('clean');
+        }
+    }, 3);
+
+    // return old
+    return JSON.parse(localStorage.getItem('db-data-active'));
 }
 
 /**
@@ -229,10 +262,17 @@ function readData() {
  * @param data
  */
 function writeData(data) {
-    data = JSON.stringify(data);
+    for (var rindex in data) {
+        for (var bindex in data[rindex]['bs']) {
+            // write booking
+            localStorage.setItem(data[rindex]['bs'][bindex]['id'], JSON.stringify(data[rindex]['bs'][bindex]));
+        }
+        delete data[rindex]['bs'];
+        // write resource
+        localStorage.setItem(data[rindex]['id'], JSON.stringify(data[rindex]));
+    }
 
-    // update active version with new data
-    localStorage.setItem('db-data-active', data);
+    localStorage.removeItem('db-data-active');
 }
 
 function _addResource(resourceId, nickname) {
