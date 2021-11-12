@@ -104,14 +104,14 @@ function _sortable4Resource() {
 
 var holder = null;
 
-function saveData(action) {
+function saveData(action, objId, childIds) {
     // notify that it's saving
     $('.notify-detail').text(Lang.saving).removeClass('save-ok').addClass('saving');
     if (holder) {
         clearTimeout(holder);
         holder = null;
     }
-    
+
     function _getDisplay(bookingObj) {
         return $(bookingObj).is('.display-booking-1') ? '1' : '0';
     }
@@ -169,7 +169,7 @@ function saveData(action) {
             });
             data.push({'id': resourceId, 'n': nickname, 'bs': bookings});
         });
-        writeData(data);
+        writeData(data, action, objId, childIds);
 
         // notify that it's saved
         $('.notify-detail').text(Lang.saved).addClass('save-ok').removeClass('saving');
@@ -222,7 +222,9 @@ function readData() {
             var id = localStorage.key(i);
             if (id.charAt(0) == 'b') {
                 var booking = JSON.parse(localStorage.getItem(id));
-                data[booking['rid']]['bs'].push(booking);
+                if (data[booking['rid']]) {
+                    data[booking['rid']]['bs'].push(booking);
+                }
             }
         }
         return Object.values(data);
@@ -261,7 +263,23 @@ function readData() {
  *
  * @param data
  */
-function writeData(data) {
+function writeData(data, action, objId, childIds) {
+    if (action && objId) {
+        switch (true) {
+            case 'delete-resource-action' == action:
+                // remove resource
+                localStorage.removeItem(objId);
+                for (var i in childIds) {
+                    localStorage.removeItem(childIds[i]);
+                }
+                break;
+
+            case 'delete-booking-action' == action:
+                localStorage.removeItem(objId);
+                break;
+        }
+        return;
+    }
     for (var rindex in data) {
         for (var bindex in data[rindex]['bs']) {
             // write booking

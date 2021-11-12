@@ -133,8 +133,9 @@ $(function () {
     });
     $(document).on('click', '.delete-booking-action', function () {
         var resource = $(this).closest('.resource-column');
+        var objId = $(this).closest('.portlet').attr('id');
         _deleteBooking($(this).closest('.portlet'), function () {
-            saveData('delete-booking-action');
+            saveData('delete-booking-action', objId);
             if ($(resource).find('.display-booking-0').length) {
                 $(resource).addClass('has-hidden-booking');
             } else {
@@ -164,8 +165,13 @@ $(function () {
     });
     
     $(document).on('click', '.delete-resource-action', function () {
+        var objId = $(this).closest('.resource-column').attr('id');
+        var childIds = [];
+        $(this).closest('.resource-column').find('.portlet').each(function () {
+            childIds.push($(this).attr('id'));
+        })
         _deleteResource($(this).closest('.resource-column'), function () {
-            saveData('delete-resource-action');
+            saveData('delete-resource-action', objId, childIds);
         });
     });
     $(document).on('click', '.move-left-action', function () {
