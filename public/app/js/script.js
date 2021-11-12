@@ -158,6 +158,7 @@ function saveData(action) {
             var bookings = [];
             $(this).find('.portlet').each(function () {
                 bookings.push({
+                    'rid': resourceId,
                     'id': $(this).attr('id'),
                     'ds': _getDisplay(this),
                     's': _getStatus(this),
