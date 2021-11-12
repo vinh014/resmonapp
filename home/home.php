@@ -97,6 +97,7 @@
 <a href="https://www.facebook.com/canhchimvandam" target="_blank">Nguyễn Văn Vinh</a>
 <a href="mailto:huygdv19@gmail.com" target="_blank">Đặng Văn Huy</a>
 <a href="https://noithatbibo.com" target="_blank">Nội Thất BIBO</a>
+<a href="https://github.com/vinh014/resmonapp" target="_blank">Github</a>
 </div>
 <div class="col-md-2"></div>
 <div class="col-md-4 text-center extra-info">
