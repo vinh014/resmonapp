@@ -22,6 +22,18 @@ _uniqid = function (prefix = "", random = false) {
     const id = sec.toString(16).replace(/\./g, "").padEnd(14, "0");
     return `${prefix}${id}${random ? `${Math.trunc(Math.random() * 100000000)}` : ""}`;
 };
+/**
+ * https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+ */
+_compare = function (a, b) {
+    if (a['c'] < b['c']) {
+        return -1;
+    }
+    if (a['c'] > b['c']) {
+        return 1;
+    }
+    return 0;
+}
 
 /**
  * https://gist.github.com/danallison/3ec9d5314788b337b682
@@ -152,12 +164,17 @@ function saveData(action, objId, childIds) {
 
     holder = setTimeout(function () {
         var data = [];
+        var countR = 0;
+        var countB = 0;
         $('.resource-column').each(function () {
+            countR++;
             var resourceId = $(this).attr('id');
             var nickname = _nickname($(this).find('.nickname').html());
             var bookings = [];
             $(this).find('.portlet').each(function () {
+                countB++;
                 bookings.push({
+                    'c': countB,
                     'rid': resourceId,
                     'id': $(this).attr('id'),
                     'ds': _getDisplay(this),
@@ -167,7 +184,7 @@ function saveData(action, objId, childIds) {
                     'd': _bookingDetail($(this).find('.portlet-content').html())
                 });
             });
-            data.push({'id': resourceId, 'n': nickname, 'bs': bookings});
+            data.push({'c': countR, 'id': resourceId, 'n': nickname, 'bs': bookings});
         });
         writeData(data, action, objId, childIds);
 
@@ -227,7 +244,11 @@ function readData() {
                 }
             }
         }
-        return Object.values(data);
+        
+        for(var i in data) {
+            data[i]['bs'] = data[i]['bs'].sort(_compare); 
+        }
+        return Object.values(data).sort(_compare);
     }
 
     // for historical reason
