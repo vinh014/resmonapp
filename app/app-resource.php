@@ -1,4 +1,4 @@
-<div class="resource-column">
+<div id="<?php echo $_resourceId; ?>" class="resource-column">
     <div class="the-resource disable-select">
         <div class="nickname-container">
             <span class="nickname" contenteditable="true"><?php echo $_nickname; ?></span>

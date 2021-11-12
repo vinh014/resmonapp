@@ -51,6 +51,7 @@
 <?php include 'app-dialog.php'; ?>
 <noscript id="booking-sample" style="display: none">
     <?php
+    $_bookingId = '{bookingId}';
     $_bookingDisplay = '{bookingDisplay}';
     $_bookingStatus = '{bookingStatus}';
     $_bookingPriority = '{bookingPriority}';
@@ -61,6 +62,7 @@
 </noscript>
 <noscript id="resource-sample" style="display: none">
     <?php
+    $_resourceId = '{resourceId}';
     $_nickname = '{nickname}';
     include 'app-resource.php';
     ?>

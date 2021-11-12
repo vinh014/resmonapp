@@ -128,7 +128,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-booking-action', function () {
-        _addBooking($(this).closest('.resource-column'), 1, 0, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
+        _addBooking($(this).closest('.resource-column'), _uniqid('b', true), 1, 0, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
         saveData('add-booking-action');
     });
     $(document).on('click', '.delete-booking-action', function () {
@@ -186,7 +186,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-resource-action', function () {
-        _addResource(Lang.nickname_sample);
+        _addResource(_uniqid('r', true), Lang.nickname_sample);
         saveData('add-resource-action');
     });
     $(document).on('click', '.download-action', function () {

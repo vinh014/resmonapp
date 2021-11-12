@@ -17,6 +17,12 @@ _restore = function (encodedHtml) {
     return jQuery('<div/>').html(encodedHtml).text();
 };
 
+_uniqid = function (prefix = "", random = false) {
+    const sec = Date.now() * 1000 + Math.random() * 1000;
+    const id = sec.toString(16).replace(/\./g, "").padEnd(14, "0");
+    return `${prefix}${id}${random ? `${Math.trunc(Math.random() * 100000000)}` : ""}`;
+};
+
 /**
  * https://gist.github.com/danallison/3ec9d5314788b337b682
  *
@@ -146,10 +152,12 @@ function saveData(action) {
     holder = setTimeout(function () {
         var data = [];
         $('.resource-column').each(function () {
+            var resourceId = $(this).attr('id');
             var nickname = _nickname($(this).find('.nickname').html());
             var bookings = [];
             $(this).find('.portlet').each(function () {
                 bookings.push({
+                    'id': $(this).attr('id'),
                     'ds': _getDisplay(this),
                     's': _getStatus(this),
                     'p': _getPriority(this),
@@ -157,7 +165,7 @@ function saveData(action) {
                     'd': _bookingDetail($(this).find('.portlet-content').html())
                 });
             });
-            data.push({'n': nickname, 'bs': bookings});
+            data.push({'id': resourceId, 'n': nickname, 'bs': bookings});
         });
         writeData(JSON.stringify(data));
 
@@ -170,18 +178,20 @@ function loadData() {
     var data = JSON.parse(readData());
     for (var j in data) {
         if (Array.isArray(data)) { // new format 
+            var resourceId = data[j]['id'];
             var nickname = data[j]['n'];
             var bookings = data[j]['bs'];
         } else { // old format
+            var resourceId = _uniqid('r', true);
             var nickname = j;
             var bookings = data[j];
         }
-        var resourceEl = _addResource(nickname);
+        var resourceEl = _addResource(resourceId, nickname);
         for (var i in bookings) {
             if (jQuery.isEmptyObject(bookings[i])) {
                 continue;
             }
-            _addBooking(resourceEl, bookings[i]['ds'], bookings[i]['s'], bookings[i]['p'], bookings[i]['t'], bookings[i]['d']);
+            _addBooking(resourceEl, bookings[i]['id'], bookings[i]['ds'], bookings[i]['s'], bookings[i]['p'], bookings[i]['t'], bookings[i]['d']);
         }
     }
     $('.resource-column').each(function () {
@@ -247,8 +257,9 @@ function writeData(data) {
     localStorage.setItem('db-data-active', data);
 }
 
-function _addResource(nickname) {
+function _addResource(resourceId, nickname) {
     var html = BindController.bind($('#resource-sample').text().trim(), {
+        'resourceId': resourceId ? resourceId : _uniqid('r', true),
         'nickname': _nickname(nickname)
     });
     var dom = $(html).appendTo($('.sub-container'));
@@ -256,9 +267,10 @@ function _addResource(nickname) {
     return dom;
 }
 
-function _addBooking(resourceEl, display, status, priority, title, detail) {
+function _addBooking(resourceEl, bookingId, display, status, priority, title, detail) {
     var bookingDetail = _bookingDetail(detail);
     var html = BindController.bind($('#booking-sample').text().trim(), {
+        'bookingId': bookingId ? bookingId : _uniqid('b', true),
         'bookingDisplay': display ? display : 1,
         'bookingStatus': status,
         'bookingPriority': priority,
