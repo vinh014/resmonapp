@@ -177,7 +177,7 @@ function saveData(action) {
 }
 
 function loadData() {
-    var data = JSON.parse(readData());
+    var data = readData();
     for (var j in data) {
         if (Array.isArray(data)) { // new format 
             var resourceId = data[j]['id'];
@@ -220,7 +220,7 @@ function readData() {
         localStorage.removeItem('db-version');
         localStorage.removeItem('db-data');
     }
-    return localStorage.getItem('db-data-active');
+    return  JSON.parse(localStorage.getItem('db-data-active'));
 }
 
 /**

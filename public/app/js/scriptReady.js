@@ -201,7 +201,7 @@ $(function () {
             (date.getSeconds() + '').padStart(2, '0')
         ];
         now = now.join('-').replace('- -', ' ');
-        downloadString(readData(), 'text/plain', now + '.json');
+        downloadString(JSON.stringify(readData()), 'text/plain', now + '.json');
     });
     $(document).on('click', '.upload-action', function () {
         $('input[type=file]').trigger('click');
