@@ -71,9 +71,13 @@ function uploadFile() {
         localStorage.clear();
         for (var i in obj) {
             for (var j in obj[i]['bs']) {
-                obj[i]['bs'][j]['id'] = _uniqid('b', true);
+                if (!obj[i]['bs'][j]['id']) {
+                    obj[i]['bs'][j]['id'] = _uniqid('b', true);
+                }
             }
-            obj[i]['id'] = _uniqid('r', true);
+            if (!obj[i]['id']) {
+                obj[i]['id'] = _uniqid('r', true);
+            }
         }
         writeData(obj);
         $('.notify-detail').text(Lang.upload_success).addClass('upload-success');
