@@ -2,7 +2,7 @@
 function system_config($key)
 {
     $config = array(
-        'static_version' => IS_WIN ? date('Y-m-d H:i:s') : STATIC_VERSION,
+        'static_version' => STATIC_VERSION,
         'in_app_timeout' => IS_WIN ? 1 : 10, // minutes
         // http://www.metamodpro.com/browser-language-codes
         // https://www.w3schools.com/tags/ref_language_codes.asp

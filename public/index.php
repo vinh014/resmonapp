@@ -1,7 +1,8 @@
 <?php
 // init configuration
 define('IS_WIN', 'WIN' === strtoupper(substr(PHP_OS, 0, 3)));
-const STATIC_VERSION = '6.26.21'; // linux manually, windows auto
+// linux manually, windows auto
+define('STATIC_VERSION', IS_WIN ? date('Y-m-d H:i:s') : @file_get_contents('status_version'));
 
 // bootstrapping
 include '../bootstrap.php';
