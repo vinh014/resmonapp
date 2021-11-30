@@ -139,7 +139,8 @@ $(function () {
         if (event.shiftKey) {
             var _current = $(this).closest('.resource-column');
             var nickname = _nickname($(_current).find('.nickname').html());
-            _addResource(_uniqid('r', true), (_getType(_current) + 1) % 6, '16', nickname, _current);
+            var resourceType = (parseInt(_getType(_current)) + 1) % 6;
+            _addResource(_uniqid('r', true), resourceType, '16', nickname, _current);
             saveData('add-resource-action');
             return;
         }
