@@ -113,6 +113,12 @@ function _sortable(el) {
             } else {
                 $(ui.sender).removeClass('has-hidden-booking');
             }
+            var receiver = $(ui.item).closest('.resource-column');
+            if ($(receiver).find('.display-booking-0').length) {
+                $(receiver).addClass('has-hidden-booking');
+            } else {
+                $(receiver).removeClass('has-hidden-booking');
+            }
         },
         update: function (event, ui) {
             saveData('sorted');
