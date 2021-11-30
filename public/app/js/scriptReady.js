@@ -176,7 +176,13 @@ $(function () {
         }
     });
     $(document).on('click', '.show-hidden-bookings-action', function () {
-        $(this).closest('.resource-column').toggleClass('show-hidden-bookings');
+        var _column = $(this).closest('.resource-column');
+        // have not any hidden booking, always show
+        if (!_column.find('.display-booking-0').length) {
+            _column.addClass('show-hidden-bookings');
+            return;
+        }
+        _column.toggleClass('show-hidden-bookings');
     });
     
     $(document).on('click', '.delete-resource-action', function () {
