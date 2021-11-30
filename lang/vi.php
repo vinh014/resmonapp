@@ -22,7 +22,7 @@ return array(
     'status_doing' => 'Đang làm',
     'status_testing' => 'Kiểm tra',
     'status_done' => 'Xong',
-    'priority_normal' => 'Thấp',
+    'priority_normal' => 'Bình thường',
     'priority_high' => 'Cao',
     'collapse_all' => 'Thu gọn tất cả',
     'add_resource' => 'Thêm tài nguyên',

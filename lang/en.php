@@ -22,7 +22,7 @@ return array(
     'status_doing' => 'Doing',
     'status_testing' => 'Testing',
     'status_done' => 'Done',
-    'priority_normal' => 'Normal',
+    'priority_normal' => 'Default',
     'priority_high' => 'High',
     'collapse_all' => 'Collapse all',
     'add_resource' => 'Add resource',
