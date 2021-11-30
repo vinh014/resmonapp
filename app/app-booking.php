@@ -6,7 +6,7 @@
         <span class='ui-icon ui-icon-play status-action status-<?php echo $_bookingStatus; ?>' title="<?php echo Lang::read('change_status'); ?>"></span>
         <span class='ui-icon ui-icon-lightbulb priority-action priority-<?php echo $_bookingPriority; ?>' title="<?php echo Lang::read('change_priority'); ?>"></span>
         <span class='ui-icon ui-icon-plusthick portlet-toggle' title="<?php echo Lang::read('collapse_expand'); ?>"></span>
-        <span class="booking-title" contenteditable="true"><?php echo $_bookingTitle; ?></span>
+        <span class="booking-title" contenteditable="true" title="<?php echo htmlentities($_bookingTitle, ENT_COMPAT, 'UTF-8'); ?>"><?php echo $_bookingTitle; ?></span>
     </div>
     <div class="portlet-content" contenteditable="true"><?php echo $_bookingDetail; ?></div>
 </div>

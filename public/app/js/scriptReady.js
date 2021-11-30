@@ -63,6 +63,7 @@ $(function () {
     $(document).on('blur', '.booking-title', function () {
         var val = _bookingTitle($(this).html());
         $(this).html(val);
+        $(this).attr('title', val);
         saveData('booking-title');
     });
 
