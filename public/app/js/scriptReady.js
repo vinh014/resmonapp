@@ -134,7 +134,14 @@ $(function () {
         saveData('priority-action');
     });
 
-    $(document).on('click', '.add-booking-action', function () {
+    $(document).on('click', '.add-booking-action', function (event) {
+        // if user is pressing shift key, add a resource instead
+        if (event.shiftKey) {
+            var _current = $(this).closest('.resource-column');
+            _addResource(_uniqid('r', true), 0, '16', Lang.nickname_sample, _current);
+            saveData('add-resource-action');
+            return;
+        }
         _addBooking($(this).closest('.resource-column'), _uniqid('b', true), 1, 10, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
         saveData('add-booking-action');
     });

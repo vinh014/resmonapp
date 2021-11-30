@@ -380,14 +380,18 @@ function writeData(data, action, objId, childIds) {
     localStorage.removeItem('db-data-active');
 }
 
-function _addResource(resourceId, resourceType, resourceSize, nickname) {
+function _addResource(resourceId, resourceType, resourceSize, nickname, after) {
     var html = BindController.bind($('#resource-sample').text().trim(), {
         'resourceId': resourceId ? resourceId : _uniqid('r', true),
         'resourceType': resourceType ? resourceType : 0,
         'resourceSize': resourceSize ? resourceSize : '16',
         'nickname': _nickname(nickname)
     });
-    var dom = $(html).appendTo($('.sub-container'));
+    if (after) {
+        var dom = $(html).insertAfter($(after));
+    } else {
+        var dom = $(html).appendTo($('.sub-container'));
+    }
     _checkResource();
     return dom;
 }
