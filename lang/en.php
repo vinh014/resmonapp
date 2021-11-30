@@ -20,8 +20,10 @@ return array(
     // app
     'status_new' => 'New',
     'status_doing' => 'Doing',
+    'status_did' => 'Did',
     'status_testing' => 'Testing',
-    'status_done' => 'Done',
+    'status_fixing' => 'Fixing',
+    'status_tested' => 'Tested',
     'priority_normal' => 'Default',
     'priority_high' => 'High',
     'collapse_all' => 'Collapse all',

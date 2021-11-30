@@ -99,17 +99,23 @@ $(function () {
     $(document).on('click', '.status-action', function () {
         var obj = $(this);
         switch (true) {
-            case obj.is('.status-0'):
-                obj.toggleClass('status-0 status-1');
+            case obj.is('.status-10'):
+                obj.toggleClass('status-10 status-11');
                 break;
-            case obj.is('.status-1'):
-                obj.toggleClass('status-1 status-2');
+            case obj.is('.status-11'):
+                obj.toggleClass('status-11 status-12');
                 break;
-            case obj.is('.status-2'):
-                obj.toggleClass('status-2 status-3');
+            case obj.is('.status-12'):
+                obj.toggleClass('status-12 status-13');
                 break;
-            case obj.is('.status-3'):
-                obj.toggleClass('status-3 status-0');
+            case obj.is('.status-13'):
+                obj.toggleClass('status-13 status-14');
+                break;
+            case obj.is('.status-14'):
+                obj.toggleClass('status-14 status-15');
+                break;
+            case obj.is('.status-15'):
+                obj.toggleClass('status-15 status-10');
                 break;
         }
         saveData('status-action');
@@ -129,7 +135,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-booking-action', function () {
-        _addBooking($(this).closest('.resource-column'), _uniqid('b', true), 1, 0, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
+        _addBooking($(this).closest('.resource-column'), _uniqid('b', true), 1, 10, 0, Lang.booking_title_sample, Lang.booking_detail_sample);
         saveData('add-booking-action');
     });
     $(document).on('click', '.delete-booking-action', function () {

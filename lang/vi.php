@@ -20,8 +20,10 @@ return array(
     // app
     'status_new' => 'Mới',
     'status_doing' => 'Đang làm',
-    'status_testing' => 'Kiểm tra',
-    'status_done' => 'Xong',
+    'status_did' => 'Đã làm',
+    'status_testing' => 'Đang kiểm',
+    'status_fixing' => 'Đang sửa',
+    'status_tested' => 'Đã kiểm',
     'priority_normal' => 'Bình thường',
     'priority_high' => 'Cao',
     'collapse_all' => 'Thu gọn tất cả',

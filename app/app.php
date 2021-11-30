@@ -18,10 +18,12 @@
         <span class="notify-detail"></span>
         <div class="separator">&nbsp;</div>
         <div class="status-container">
-            <div class="status-item status-0"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_new'); ?></div>
-            <div class="status-item status-1"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_doing'); ?></div>
-            <div class="status-item status-2"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_testing'); ?></div>
-            <div class="status-item status-3"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_done'); ?></div>
+            <div class="status-item status-10"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_new'); ?></div>
+            <div class="status-item status-11"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_doing'); ?></div>
+            <div class="status-item status-12"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_did'); ?></div>
+            <div class="status-item status-13"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_testing'); ?></div>
+            <div class="status-item status-14"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_fixing'); ?></div>
+            <div class="status-item status-15"><span class='ui-icon ui-icon-play'></span><?php echo Lang::read('status_tested'); ?></div>
         </div>
         <div class="separator">&nbsp;</div>
         <div class="priority-container">

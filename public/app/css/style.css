@@ -305,19 +305,27 @@ div.separator {
     border-radius: 4px;
 }
 
-.status-0 {
+.status-10 {
     background-color: lightcyan;
 }
 
-.status-1 {
+.status-11 {
     background-color: yellow
 }
 
-.status-2 {
+.status-12 {
     background-color: deepskyblue;
 }
 
-.status-3 {
+.status-13 {
+    background-color: magenta;
+}
+
+.status-14 {
+    background-color: mediumorchid;
+}
+
+.status-15 {
     background-color: orange
 }
 

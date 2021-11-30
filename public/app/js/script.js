@@ -143,17 +143,23 @@ function saveData(action, objId, childIds) {
         var status;
         var statusObj = $(bookingObj).find('.status-action');
         switch (true) {
-            case statusObj.is('.status-0'):
-                status = '0';
+            case statusObj.is('.status-10'):
+                status = '10';
                 break;
-            case statusObj.is('.status-1'):
-                status = '1';
+            case statusObj.is('.status-11'):
+                status = '11';
                 break;
-            case statusObj.is('.status-2'):
-                status = '2';
+            case statusObj.is('.status-12'):
+                status = '12';
                 break;
-            case statusObj.is('.status-3'):
-                status = '3';
+            case statusObj.is('.status-13'):
+                status = '13';
+                break;
+            case statusObj.is('.status-14'):
+                status = '14';
+                break;
+            case statusObj.is('.status-15'):
+                status = '15';
                 break;
         }
         return status;
@@ -388,10 +394,12 @@ function _addResource(resourceId, resourceType, resourceSize, nickname) {
 
 function _addBooking(resourceEl, bookingId, display, status, priority, title, detail) {
     var bookingDetail = _bookingDetail(detail);
+    var mapping = {0: 10, 1: 11, 2: 13, 3: 15};
+    status = mapping[status] ? mapping[status] : status;
     var html = BindController.bind($('#booking-sample').text().trim(), {
         'bookingId': bookingId ? bookingId : _uniqid('b', true),
         'bookingDisplay': display ? display : 1,
-        'bookingStatus': status,
+        'bookingStatus': status ? status : 10,
         'bookingPriority': priority,
         'bookingTitle': _bookingTitle(title ? title : detail),
         'bookingDetail': bookingDetail
