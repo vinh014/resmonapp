@@ -107,6 +107,13 @@ function _sortable(el) {
         connectWith: '.resource-column',
         handle: '.sortable-handle',
         cancel: '.ui-icon:not(.sortable-handle),input,textarea,button,select,option',
+        receive: function (event, ui) {
+            if ($(ui.sender).find('.display-booking-0').length) {
+                $(ui.sender).addClass('has-hidden-booking');
+            } else {
+                $(ui.sender).removeClass('has-hidden-booking');
+            }
+        },
         update: function (event, ui) {
             saveData('sorted');
         }
