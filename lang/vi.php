@@ -33,6 +33,7 @@ return array(
     'delete_resource' => 'Xóa tài nguyên này',
     'delete_booking' => 'Xóa nhiệm vụ này',
     'change_status' => 'Đổi trạng thái',
+    'change_type' => 'Đổi kiểu tài nguyên',
     'change_priority' => 'Đổi độ ưu tiên',
     'collapse_expand' => 'Thu gọn / Trải ra',
     'delete_resource_title' => 'Xóa tài nguyên này?',

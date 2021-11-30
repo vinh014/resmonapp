@@ -63,6 +63,7 @@
 <noscript id="resource-sample" style="display: none">
     <?php
     $_resourceId = '{resourceId}';
+    $_resourceType = '{resourceType}';
     $_nickname = '{nickname}';
     include 'app-resource.php';
     ?>

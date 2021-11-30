@@ -110,10 +110,25 @@ body {
 div.the-resource {
     text-align: center;
     margin-bottom: 10px;
-    background-color: lightskyblue;
     padding: 5px 50px 5px 50px;
     border-radius: 8px;
     position: relative;
+}
+
+div.the-resource.type-0 {
+    background-color: lightskyblue;
+}
+
+div.the-resource.type-1 {
+    background-color: yellow;
+}
+
+div.the-resource.type-2 {
+    background-color: palegreen;
+}
+
+div.the-resource.type-3 {
+    background-color: lightsalmon;
 }
 
 div.the-resource .nickname-container {
@@ -144,6 +159,11 @@ div.the-resource .ui-icon-trash {
 
 div.the-resource .ui-icon-arrowthick-1-w {
     left: 21px;
+}
+
+div.the-resource .ui-icon-info {
+    left: 21px;
+    top: 9.5px;
 }
 
 div.the-resource .ui-icon-arrow-4-diag {

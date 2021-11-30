@@ -175,6 +175,26 @@ $(function () {
             saveData('delete-resource-action', objId, childIds);
         });
     });
+
+    $(document).on('click', '.change-type-action', function () {
+        var obj = $(this).closest('.the-resource');
+        switch (true) {
+            case obj.is('.type-0'):
+                obj.toggleClass('type-0 type-1');
+                break;
+            case obj.is('.type-1'):
+                obj.toggleClass('type-1 type-2');
+                break;
+            case obj.is('.type-2'):
+                obj.toggleClass('type-2 type-3');
+                break;
+            case obj.is('.type-3'):
+                obj.toggleClass('type-3 type-0');
+                break;
+        }
+        saveData('type-action');
+    });
+    
     $(document).on('click', '.move-left-action', function () {
         var current = $(this).closest('.resource-column');
         var prev = current.prev('.resource-column');
@@ -193,7 +213,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-resource-action', function () {
-        _addResource(_uniqid('r', true), Lang.nickname_sample);
+        _addResource(_uniqid('r', true), 0, Lang.nickname_sample);
         saveData('add-resource-action');
     });
     $(document).on('click', '.download-action', function () {

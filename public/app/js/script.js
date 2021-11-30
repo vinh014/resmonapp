@@ -159,6 +159,26 @@ function saveData(action, objId, childIds) {
         return status;
     }
 
+    function _getType(columnObj) {
+        var type;
+        var typeObj = $(columnObj).find('.the-resource');
+        switch (true) {
+            case typeObj.is('.type-0'):
+                type = '0';
+                break;
+            case typeObj.is('.type-1'):
+                type = '1';
+                break;
+            case typeObj.is('.type-2'):
+                type = '2';
+                break;
+            case typeObj.is('.type-3'):
+                type = '3';
+                break;
+        }
+        return type;
+    }
+
     function _getPriority(bookingObj) {
         var priority;
         var priorityObj = $(bookingObj).find('.priority-action');
@@ -180,6 +200,7 @@ function saveData(action, objId, childIds) {
         $('.resource-column').each(function () {
             countR++;
             var resourceId = $(this).attr('id');
+            var resourceType = _getType(this);
             var nickname = _nickname($(this).find('.nickname').html());
             var bookings = [];
             $(this).find('.portlet').each(function () {
@@ -195,7 +216,7 @@ function saveData(action, objId, childIds) {
                     'd': _bookingDetail($(this).find('.portlet-content').html())
                 });
             });
-            data.push({'c': countR, 'id': resourceId, 'n': nickname, 'bs': bookings});
+            data.push({'c': countR, 'id': resourceId, 't': resourceType, 'n': nickname, 'bs': bookings});
         });
         writeData(data, action, objId, childIds);
 
@@ -209,14 +230,16 @@ function loadData() {
     for (var j in data) {
         if (Array.isArray(data)) { // new format 
             var resourceId = data[j]['id'];
+            var resourceType = data[j]['t'];
             var nickname = data[j]['n'];
             var bookings = data[j]['bs'];
         } else { // old format
             var resourceId = _uniqid('r', true);
             var nickname = j;
             var bookings = data[j];
+            var resourceType = 0;
         }
-        var resourceEl = _addResource(resourceId, nickname);
+        var resourceEl = _addResource(resourceId, resourceType, nickname);
         for (var i in bookings) {
             if (jQuery.isEmptyObject(bookings[i])) {
                 continue;
@@ -325,9 +348,10 @@ function writeData(data, action, objId, childIds) {
     localStorage.removeItem('db-data-active');
 }
 
-function _addResource(resourceId, nickname) {
+function _addResource(resourceId, resourceType, nickname) {
     var html = BindController.bind($('#resource-sample').text().trim(), {
         'resourceId': resourceId ? resourceId : _uniqid('r', true),
+        'resourceType': resourceType ? resourceType : 0,
         'nickname': _nickname(nickname)
     });
     var dom = $(html).appendTo($('.sub-container'));
