@@ -45,7 +45,7 @@ return array(
     'move_right' => 'Sang phải',
     'nickname_sample' => 'Tài nguyên',
     'booking_title_sample' => 'Làm gì đó',
-    'booking_detail_sample' => 'Chi tiết',
+    'booking_detail_sample' => '',
     'invalid_json' => 'Không phải json. Hãy kiểm tra lại',
     'upload_success' => 'Nhập tệp xong. Hãy làm mới (F5)',
     'invalid_file' => 'Tệp không hợp lệ',
