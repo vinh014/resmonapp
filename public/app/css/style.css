@@ -168,8 +168,9 @@ div.the-resource .ui-icon {
     cursor: pointer;
 }
 
-div.the-resource .ui-icon-circle-plus {
+div.the-resource .ui-icon-plus {
     right: 5px;
+    top: 7px;
 }
 
 div.the-resource .ui-icon-trash {
@@ -180,9 +181,9 @@ div.the-resource .ui-icon-arrowthick-1-w {
     left: 21px;
 }
 
-div.the-resource .ui-icon-info {
+div.the-resource .ui-icon-suitcase {
     left: 21px;
-    top: 9.5px;
+    top: 9px;
 }
 
 div.the-resource .ui-icon-arrow-4-diag {
