@@ -127,6 +127,26 @@ function _sortable4Resource() {
 
 var holder = null;
 
+function _getType(columnObj) {
+    var type;
+    var typeObj = $(columnObj).find('.the-resource');
+    switch (true) {
+        case typeObj.is('.type-0'):
+            type = '0';
+            break;
+        case typeObj.is('.type-1'):
+            type = '1';
+            break;
+        case typeObj.is('.type-2'):
+            type = '2';
+            break;
+        case typeObj.is('.type-3'):
+            type = '3';
+            break;
+    }
+    return type;
+}
+
 function saveData(action, objId, childIds) {
     // notify that it's saving
     $('.notify-detail').text(Lang.saving).removeClass('save-ok').addClass('saving');
@@ -163,26 +183,6 @@ function saveData(action, objId, childIds) {
                 break;
         }
         return status;
-    }
-
-    function _getType(columnObj) {
-        var type;
-        var typeObj = $(columnObj).find('.the-resource');
-        switch (true) {
-            case typeObj.is('.type-0'):
-                type = '0';
-                break;
-            case typeObj.is('.type-1'):
-                type = '1';
-                break;
-            case typeObj.is('.type-2'):
-                type = '2';
-                break;
-            case typeObj.is('.type-3'):
-                type = '3';
-                break;
-        }
-        return type;
     }
 
     function _getSize(columnObj) {
