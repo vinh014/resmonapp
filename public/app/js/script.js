@@ -179,6 +179,29 @@ function saveData(action, objId, childIds) {
         return type;
     }
 
+    function _getSize(columnObj) {
+        var size;
+        columnObj = $(columnObj);
+        switch (true) {
+            case columnObj.is('.size-16'):
+                size = '16';
+                break;
+            case columnObj.is('.size-15'):
+                size = '15';
+                break;
+            case columnObj.is('.size-14'):
+                size = '14';
+                break;
+            case columnObj.is('.size-13'):
+                size = '13';
+                break;
+            case columnObj.is('.size-12'):
+                size = '12';
+                break;
+        }
+        return size;
+    }
+
     function _getPriority(bookingObj) {
         var priority;
         var priorityObj = $(bookingObj).find('.priority-action');
@@ -201,6 +224,7 @@ function saveData(action, objId, childIds) {
             countR++;
             var resourceId = $(this).attr('id');
             var resourceType = _getType(this);
+            var resourceSize = _getSize(this);
             var nickname = _nickname($(this).find('.nickname').html());
             var bookings = [];
             $(this).find('.portlet').each(function () {
@@ -216,7 +240,7 @@ function saveData(action, objId, childIds) {
                     'd': _bookingDetail($(this).find('.portlet-content').html())
                 });
             });
-            data.push({'c': countR, 'id': resourceId, 't': resourceType, 'n': nickname, 'bs': bookings});
+            data.push({'c': countR, 'id': resourceId, 't': resourceType, 's': resourceSize, 'n': nickname, 'bs': bookings});
         });
         writeData(data, action, objId, childIds);
 
@@ -231,6 +255,7 @@ function loadData() {
         if (Array.isArray(data)) { // new format 
             var resourceId = data[j]['id'];
             var resourceType = data[j]['t'];
+            var resourceSize = data[j]['s'];
             var nickname = data[j]['n'];
             var bookings = data[j]['bs'];
         } else { // old format
@@ -238,8 +263,9 @@ function loadData() {
             var nickname = j;
             var bookings = data[j];
             var resourceType = 0;
+            var resourceSize = '14';
         }
-        var resourceEl = _addResource(resourceId, resourceType, nickname);
+        var resourceEl = _addResource(resourceId, resourceType, resourceSize, nickname);
         for (var i in bookings) {
             if (jQuery.isEmptyObject(bookings[i])) {
                 continue;
@@ -348,10 +374,11 @@ function writeData(data, action, objId, childIds) {
     localStorage.removeItem('db-data-active');
 }
 
-function _addResource(resourceId, resourceType, nickname) {
+function _addResource(resourceId, resourceType, resourceSize, nickname) {
     var html = BindController.bind($('#resource-sample').text().trim(), {
         'resourceId': resourceId ? resourceId : _uniqid('r', true),
         'resourceType': resourceType ? resourceType : 0,
+        'resourceSize': resourceSize ? resourceSize : '14',
         'nickname': _nickname(nickname)
     });
     var dom = $(html).appendTo($('.sub-container'));

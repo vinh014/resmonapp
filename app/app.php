@@ -64,6 +64,7 @@
     <?php
     $_resourceId = '{resourceId}';
     $_resourceType = '{resourceType}';
+    $_resourceSize = '{resourceSize}';
     $_nickname = '{nickname}';
     include 'app-resource.php';
     ?>

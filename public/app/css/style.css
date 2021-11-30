@@ -29,13 +29,32 @@ body {
 }
 
 .resource-column {
-    width: 33.3%;
     float: left;
     margin: 10px 0 0;
     padding: 0 4px 13px; /* bottom for drag and drop */
     text-align: left;
     min-height: 100px;
     box-sizing: border-box;
+}
+
+.resource-column.size-16 {
+    width: 16.67%;
+}
+
+.resource-column.size-15 {
+    width: 20.00%;
+}
+
+.resource-column.size-14 {
+    width: 25.00%;
+}
+
+.resource-column.size-13 {
+    width: 33.33%;
+}
+
+.resource-column.size-12 {
+    width: 50.00%;
 }
 
 .portlet {
@@ -178,6 +197,9 @@ div.the-resource .ui-icon-cancel {
 }
 
 div.the-resource .ui-icon-arrowthick-1-e {
+    right: 21px;
+}
+div.the-resource .ui-icon-arrowthick-2-e-w {
     right: 21px;
 }
 

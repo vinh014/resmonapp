@@ -34,6 +34,7 @@ return array(
     'delete_booking' => 'Delete this booking',
     'change_status' => 'Change status',
     'change_type' => 'Change type',
+    'change_size' => 'Change size',
     'change_priority' => 'Change priority',
     'collapse_expand' => 'Collapse/Expand',
     'delete_resource_title' => 'Delete this resource?',

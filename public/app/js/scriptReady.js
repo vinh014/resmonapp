@@ -195,6 +195,28 @@ $(function () {
         saveData('type-action');
     });
     
+    $(document).on('click', '.change-size-action', function () {
+        var obj = $(this).closest('.resource-column');
+        switch (true) {
+            case obj.is('.size-16'):
+                obj.toggleClass('size-16 size-15');
+                break;
+            case obj.is('.size-15'):
+                obj.toggleClass('size-15 size-14');
+                break;
+            case obj.is('.size-14'):
+                obj.toggleClass('size-14 size-13');
+                break;
+            case obj.is('.size-13'):
+                obj.toggleClass('size-13 size-12');
+                break;
+            case obj.is('.size-12'):
+                obj.toggleClass('size-12 size-16');
+                break;
+        }
+        saveData('size-action');
+    });
+    
     $(document).on('click', '.move-left-action', function () {
         var current = $(this).closest('.resource-column');
         var prev = current.prev('.resource-column');
@@ -213,7 +235,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-resource-action', function () {
-        _addResource(_uniqid('r', true), 0, Lang.nickname_sample);
+        _addResource(_uniqid('r', true), 0, '14', Lang.nickname_sample);
         saveData('add-resource-action');
     });
     $(document).on('click', '.download-action', function () {
