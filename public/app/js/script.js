@@ -269,7 +269,7 @@ function loadData() {
             var nickname = j;
             var bookings = data[j];
             var resourceType = 0;
-            var resourceSize = '14';
+            var resourceSize = '16';
         }
         var resourceEl = _addResource(resourceId, resourceType, resourceSize, nickname);
         for (var i in bookings) {
@@ -384,7 +384,7 @@ function _addResource(resourceId, resourceType, resourceSize, nickname) {
     var html = BindController.bind($('#resource-sample').text().trim(), {
         'resourceId': resourceId ? resourceId : _uniqid('r', true),
         'resourceType': resourceType ? resourceType : 0,
-        'resourceSize': resourceSize ? resourceSize : '14',
+        'resourceSize': resourceSize ? resourceSize : '16',
         'nickname': _nickname(nickname)
     });
     var dom = $(html).appendTo($('.sub-container'));

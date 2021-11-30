@@ -241,7 +241,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-resource-action', function () {
-        _addResource(_uniqid('r', true), 0, '14', Lang.nickname_sample);
+        _addResource(_uniqid('r', true), 0, '16', Lang.nickname_sample);
         saveData('add-resource-action');
     });
     $(document).on('click', '.download-action', function () {
