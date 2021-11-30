@@ -203,7 +203,13 @@ $(function () {
                 obj.toggleClass('type-2 type-3');
                 break;
             case obj.is('.type-3'):
-                obj.toggleClass('type-3 type-0');
+                obj.toggleClass('type-3 type-4');
+                break;
+            case obj.is('.type-4'):
+                obj.toggleClass('type-4 type-5');
+                break;
+            case obj.is('.type-5'):
+                obj.toggleClass('type-5 type-0');
                 break;
         }
         saveData('type-action');

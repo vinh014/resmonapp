@@ -135,19 +135,27 @@ div.the-resource {
 }
 
 div.the-resource.type-0 {
-    background-color: lightskyblue;
+    background-color: lightcyan;
 }
 
 div.the-resource.type-1 {
-    background-color: yellow;
+    background-color: yellow
 }
 
 div.the-resource.type-2 {
-    background-color: palegreen;
+    background-color: deepskyblue;
 }
 
 div.the-resource.type-3 {
-    background-color: lightsalmon;
+    background-color: magenta;
+}
+
+div.the-resource.type-4 {
+    background-color: mediumorchid;
+}
+
+div.the-resource.type-5 {
+    background-color: orange
 }
 
 div.the-resource .nickname-container {

@@ -143,6 +143,12 @@ function _getType(columnObj) {
         case typeObj.is('.type-3'):
             type = '3';
             break;
+        case typeObj.is('.type-4'):
+            type = '4';
+            break;
+        case typeObj.is('.type-5'):
+            type = '5';
+            break;
     }
     return type;
 }
