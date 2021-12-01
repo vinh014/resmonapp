@@ -139,7 +139,7 @@ div.the-resource.type-0 {
 }
 
 div.the-resource.type-1 {
-    background-color: yellow
+    background-color: #e5f879;
 }
 
 div.the-resource.type-2 {
@@ -147,7 +147,7 @@ div.the-resource.type-2 {
 }
 
 div.the-resource.type-3 {
-    background-color: magenta;
+    background-color: #e88ee8;
 }
 
 div.the-resource.type-4 {
@@ -155,7 +155,7 @@ div.the-resource.type-4 {
 }
 
 div.the-resource.type-5 {
-    background-color: orange
+    background-color: orange;
 }
 
 div.the-resource .nickname-container {
@@ -319,7 +319,7 @@ div.separator {
 }
 
 .status-11 {
-    background-color: yellow
+    background-color: #e5f879;
 }
 
 .status-12 {
@@ -327,7 +327,7 @@ div.separator {
 }
 
 .status-13 {
-    background-color: magenta;
+    background-color: #e88ee8;
 }
 
 .status-14 {
