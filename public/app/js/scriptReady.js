@@ -139,7 +139,12 @@ $(function () {
         if (event.shiftKey) {
             var _current = $(this).closest('.resource-column');
             var nickname = _nickname($(_current).find('.nickname').html());
-            var resourceType = (parseInt(_getType(_current)) + 1) % 6;
+            // if user is pressing ctrl key, same type is used
+            if (event.ctrlKey) {
+                var resourceType = _getType(_current);
+            } else {
+                var resourceType = (parseInt(_getType(_current)) + 1) % 6;
+            }
             _addResource(_uniqid('r', true), resourceType, '16', nickname, _current);
             saveData('add-resource-action');
             return;
@@ -216,7 +221,10 @@ $(function () {
                 obj.toggleClass('type-4 type-5');
                 break;
             case obj.is('.type-5'):
-                obj.toggleClass('type-5 type-0');
+                obj.toggleClass('type-5 type-6');
+                break;
+            case obj.is('.type-6'):
+                obj.toggleClass('type-6 type-0');
                 break;
         }
         saveData('type-action');

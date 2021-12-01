@@ -158,6 +158,11 @@ div.the-resource.type-5 {
     background-color: orange;
 }
 
+/* for project */
+div.the-resource.type-6 {
+    background-color: #74ef88;
+}
+
 div.the-resource .nickname-container {
     position: relative;
     width: 100%;

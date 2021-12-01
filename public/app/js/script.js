@@ -162,6 +162,9 @@ function _getType(columnObj) {
         case typeObj.is('.type-5'):
             type = '5';
             break;
+        case typeObj.is('.type-6'): // for project
+            type = '6';
+            break;
     }
     return type;
 }
